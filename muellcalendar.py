@@ -3,7 +3,7 @@ from datetime import datetime
 from pytz import UTC
 
 def muellrequest():
-    muell = open('/home/tabula_rasa/Dokumente/telegram_bots/brabandibot/muell.ics', 'rb')
+    muell = open('/home/tabula_rasa/Dokumente/telegram_bots/Brabandibot/muell.ics', 'rb')
     muellcal = Calendar.from_ical(muell.read())
     ls_muell = []
 
