@@ -63,10 +63,6 @@ for datetime in muelltime_call:
     else:
         None
 
-print(muellcal)
-print(muelltime_call)
-print(muell_que_list)
-
 #Automated Notification Rasen
 def callback_rasen(context: telegram.ext.CallbackContext):
     context.bot.send_message(chat_id='508098654', text='Wer gießt morgen den Rasen? Nicht vergessen: 1x morgens und 1x abends')
@@ -75,11 +71,8 @@ rasen_message_time = time(hour=18, minute=00)
 rasen_dates =[today_date + timedelta(days=x) for x in range(14)]
 rasen_que_list = []
 
-print(rasen_dates)
 for date in rasen_dates:
         rasen_que_list.append(rasen_que.run_once(callback=callback_rasen, when= datetime.combine(date=date, time=rasen_message_time) - timedelta(hours=2) )) #2 Stunden abziehen wegen UTC
 
-print(rasen_que_list)
-print(datetime.combine(date=date, time= rasen_message_time) - timedelta(hours=2))
 
 updater.start_polling()
