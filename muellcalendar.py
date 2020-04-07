@@ -17,8 +17,9 @@ def muellrequest():
 def istodaymuell(muell):
     today = datetime.now().date()
     for date in muell:
-        if today == date:
-            return "Ihr müsst heute den Gelben Sack vor die Tür stellen rausbringen!"
+        if today < date:
+            datestr = date.strftime('%d.%m')
+            return "Ihr müsst den Gelben Sack erst am " +datestr+ " vor die Tür stellen!"
             break
     else:
         return "Nein, heute müsst ihr nicht den gelben Sack vor die Tür stellen!"
