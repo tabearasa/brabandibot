@@ -1,11 +1,13 @@
-import telegram.ext
-from telegram.ext import Updater, JobQueue, Job, CallbackContext
-from telegram.ext import CommandHandler
 import logging
-from jokes import joke, tronalddump
-from muellcalendar import muellrequest, istodaymuell
 import datetime
 from datetime import datetime, timedelta, time
+from uuid import uuid4
+
+import telegram.ext
+from telegram import User,Updater, JobQueue, Job, CallbackContext, CommandHandler
+
+from jokes import joke, tronalddump
+from muellcalendar import muellrequest, istodaymuell
 
 #Bot Setup
 updater = Updater(token='1093447063:AAEAyXrmud6nG7ahRh3FSZg2D-JCOng_OmM', use_context=True)
@@ -15,7 +17,12 @@ rasen_que = updater.job_queue
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
+#Error Handler
+def error(update, context):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, context.error)
 
+dispatcher.add_error_handler(error)
 
 #Send Message
 def joke_bot(update, context):
