@@ -1,13 +1,14 @@
-import logging
 import datetime
 from datetime import datetime, timedelta, time
-from uuid import uuid4
 
 import telegram.ext
-from telegram import User,Updater, JobQueue, Job, CallbackContext, CommandHandler
+from telegram import User
+from telegram.ext import Updater, JobQueue, Job, CallbackContext, CommandHandler
+import logging
 
 from jokes import joke, tronalddump
 from muellcalendar import muellrequest, istodaymuell
+
 
 #Bot Setup
 updater = Updater(token='1093447063:AAEAyXrmud6nG7ahRh3FSZg2D-JCOng_OmM', use_context=True)
@@ -80,6 +81,10 @@ rasen_que_list = []
 
 for date in rasen_dates:
         rasen_que_list.append(rasen_que.run_once(callback=callback_rasen, when= datetime.combine(date=date, time=rasen_message_time) - timedelta(hours=2) )) #2 Stunden abziehen wegen UTC
+
+#Rasenpoints
+def rasenpunkte(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="")
 
 
 updater.start_polling()
