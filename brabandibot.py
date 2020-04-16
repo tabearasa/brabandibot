@@ -8,6 +8,7 @@ import logging
 
 from jokes import joke, tronalddump
 from muellcalendar import muellrequest, istodaymuell
+#from putzplan import putzplan
 
 
 #Bot Setup
@@ -37,6 +38,10 @@ def tronalddump_bot(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=tronalddump())
 
 
+#Putzplan
+def show_putzplan(update, context):
+    context.bot.send_message(update.message.chat_id, str(update.message.from_user.first_name)) 
+
 #Command Handler
 muell_handler = CommandHandler('muell', muell_bot)
 dispatcher.add_handler(muell_handler)
@@ -46,6 +51,9 @@ dispatcher.add_handler(joke_handler)
 
 tronalddump_handler = CommandHandler('tronalddump', tronalddump_bot)
 dispatcher.add_handler(tronalddump_handler)
+
+show_putzplan_handler = CommandHandler('putzplan', show_putzplan)
+dispatcher.add_handler(show_putzplan_handler)
 
 #Automated Notification Muell
 def callback_muell(context: telegram.ext.CallbackContext):
