@@ -3,7 +3,7 @@ from datetime import datetime
 from pytz import UTC
 
 def muellrequest():
-    muell = open('muell.ics', 'rb')
+    muell = open('muell_test.ics', 'rb')
     muellcal = Calendar.from_ical(muell.read())
     ls_muell = []
 
