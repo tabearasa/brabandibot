@@ -3,8 +3,8 @@ import datetime
 from datetime import datetime, timedelta, time
 
 import telegram.ext
-from telegram import User, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, JobQueue, Job, CallbackContext, CommandHandler, CallbackQueryHandler
+from telegram import User
+from telegram.ext import Updater, JobQueue, Job, CallbackContext, CommandHandler
 import logging
 
 from jokes import joke, tronalddump
@@ -56,30 +56,9 @@ dispatcher.add_handler(tronalddump_handler)
 show_putzplan_handler = CommandHandler('putzplan', show_putzplan)
 dispatcher.add_handler(show_putzplan_handler)
 
-#Callback Query Handler (inline buttons)
-updater.dispatcher.add_handler(CallbackQueryHandler(button))
-
 #Automated Notification Muell
-def callback_muell(update, context: telegram.ext.CallbackContext):
-    keyboard = [InlineKeyboardButton("Erledigt", callback_data='1')]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
-    update.message.reply_text('Morgen wird der gelbe Sack abgeholt! Ihr müsst den gelben Sack heute oder morgen früh rausstellen.', reply_markup=reply_markup)
-
-    #context.bot.send_message(chat_id='508098654', text='Ihr müsst morgen den gelben Sack rausbringen!')
-
-def button(update, context):
-    query = update.callback_query
-
-    # CallbackQueries need to be answered, even if no notification to the user is needed
-    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
-    query.answer()
-
-    username = query.from_user.username
-    message = username + " hat ihn schon rausgestellt."
-
-    query.edit_message_text(text="Morgen wird der gelbe Sack abgeholt!" + message)
-
+def callback_muell(context: telegram.ext.CallbackContext):
+    context.bot.send_message(chat_id='508098654', text='Ihr müsst morgen den gelben Sack rausbringen!')
 
 today_date = datetime.now().date()
 today_time = datetime.now()
