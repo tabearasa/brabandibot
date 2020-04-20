@@ -101,8 +101,6 @@ for datetime in muelltime_call:
     else:
         None
 
-
-
 """ #Automated Notification Rasen
 def callback_rasen(context: telegram.ext.CallbackContext):
     context.bot.send_message(chat_id='***REMOVED***', text='Wer gießt morgen den Rasen? Nicht vergessen: 1x morgens und 1x abends')
