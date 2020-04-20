@@ -9,7 +9,7 @@ def joke():
 def tronalddump():
     response = requests.get("https://api.tronalddump.io/random/quote")
     quotes = response.json()
-    #print(quotes)
+    print(quotes)
     return quotes.get('value')
 
 tronalddump()
