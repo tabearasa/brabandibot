@@ -56,9 +56,6 @@ dispatcher.add_handler(tronalddump_handler)
 show_putzplan_handler = CommandHandler('putzplan', show_putzplan)
 dispatcher.add_handler(show_putzplan_handler)
 
-#Callback Query Handler (inline buttons)
-updater.dispatcher.add_handler(CallbackQueryHandler(button))
-
 #Automated Notification Muell
 def callback_muell(update, context: telegram.ext.CallbackContext):
     keyboard = [InlineKeyboardButton("Erledigt", callback_data='1')]
@@ -80,6 +77,9 @@ def button(update, context):
 
     query.edit_message_text(text="Morgen wird der gelbe Sack abgeholt!" + message)
 
+
+#Callback Query Handler (inline buttons)
+updater.dispatcher.add_handler(CallbackQueryHandler(button))
 
 today_date = datetime.now().date()
 today_time = datetime.now()
