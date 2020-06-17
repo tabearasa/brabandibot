@@ -58,7 +58,7 @@ dispatcher.add_handler(show_putzplan_handler)
 
 #Automated Notification Muell
 def callback_muell(context: telegram.ext.CallbackContext):
-    context.bot.send_message(chat_id='508098654', text='Ihr müsst morgen den gelben Sack rausbringen!')
+    context.bot.send_message(chat_id='479197721', text='Ihr müsst morgen den gelben Sack rausbringen!')
 
 today_date = datetime.now().date()
 today_time = datetime.now()
