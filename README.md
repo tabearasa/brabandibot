@@ -1,5 +1,5 @@
 # Brabandibot
-A helping hand for the inhabitants of Brabantstrasse 11
+A helping hand for the inhabitants of Brabantstrasse
 
 # Dependencies
 ```pip install python-telegram-bot```
