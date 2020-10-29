@@ -13,7 +13,7 @@ from muellcalendar import muellrequest, istodaymuell
 
 
 #Bot Setup
-updater = Updater(token='1093447063:AAEAyXrmud6nG7ahRh3FSZg2D-JCOng_OmM', use_context=True)
+updater = Updater(token='', use_context=True)
 dispatcher = updater.dispatcher
 muell_que = updater.job_queue
 rasen_que = updater.job_queue
@@ -83,6 +83,5 @@ for datetime in muelltime_call:
 #Rasenpoints
 def rasenpunkte(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="")
-
 
 updater.start_polling()
